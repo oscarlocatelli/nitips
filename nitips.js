@@ -3,22 +3,22 @@
 		var defaults = {
 			activation: "hover", // hover, click, focus
 			position: "top", // top, right, bottom, left
-			showDelay: 0,
-			hideDelay: 0,
-			fadeIn: 0,
-			fadeOut: 0,
+			showDelay: 0, // delay before show tip
+			hideDelay: 0, // delay before hide tip
+			fadeIn: 0, // fade in time
+			fadeOut: 0, // fade out time
 			attribute: false, // set an attribute to auto generate tip from a hand attribute
 			hand: false, // set hand jQuery object if you don't want it is tip.prev()
 			loadUrl: false, // set local or cross site url for deferred load
-			autoShow: false,
-			keepAlive: false,
-			permanent: false,
-			edgeOffset: 5,
-			arrowSize: 10,
-			rounding: 8,
-			padding: 8,
-			closer: 'x', // text or HTML
-			baseCssClass: 'nitips-tip'
+			autoShow: false, // auto show tip when nitips() is called
+			keepAlive: false, // not auto hide tip when mouseout, click it for dismiss, it also add a tip closer
+			permanent: false, // tip is undismissible
+			edgeOffset: 5, // distance from target
+			arrowSize: 10, // size of arrow
+			rounding: 8, // size of tip rounding
+			padding: 8, // size of content padding
+			closer: 'x', // text or HTML for tip closer content
+			baseCssClass: 'nitips-tip' // base CSS class, change it for style only this tips context
 		};
 
 		return this.each(function () {

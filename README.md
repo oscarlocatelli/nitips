@@ -10,7 +10,7 @@ Basic usage:
 	<a href="#">basic</a>
 	<div class="nitips">Tooltip body here !!!</div>
 
-$('.nitips').nitips();
+	$('.nitips').nitips();
 
 
 Advance usage:

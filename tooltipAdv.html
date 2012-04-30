@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		body { font-family: Arial, "MS Trebuchet", sans-serif; }
+		span { display: inline-block; background-color: #f00; margin-left: 300px; }
+		span:first-child { margin-top: 170px; }
+		/* Tooltip */
+		.nitips { display: none; }
+		.nitips * { margin-bottom: 5px; }
+		.nitips *:last-child { margin-bottom: 0; }
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="nitips.css" />
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="nitips.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('.nitips').nitips();
+		});
+	</script>
+</head>
+<body>
+	<span>Click for top</span>
+	<div style="width:250px" data-nitips-activation="click" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span id="ppp">Left auto show and keep and over for bottom</span>
+	<div style="width:250px" data-nitips-position="bottom" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<div data-nitips-hand="#ppp" data-nitips-position="left" data-nitips-autoShow data-nitips-keepAlive class="nitips">Hi there!</div>
+	<br><br><br>
+	<span>Auto show no keep</span>
+	<div data-nitips-position="right" data-nitips-autoShow class="nitips">Hi there!</div>
+	<br><br><br>
+	<span>Over for left</span>
+	<div style="width:250px" data-nitips-position="left" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span>Over for right keep</span>
+	<div style="width:250px" data-nitips-position="right" data-nitips-keepAlive class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span id="hand">Over for partial local load at left and click for Cross Site Load on right</span>
+	<div style="width: 500px; height: 500px;" class="nitips" data-nitips-position="right" data-nitips-activation="click" data-nitips-hand="#hand" data-nitips-loadUrl="http://www.microsoft.it"><em>Loading ...</em></div>
+	<div class="nitips" data-nitips-position="left" data-nitips-hand="#hand" data-nitips-loadUrl="partial.html"><em>Loading ...</em></div>
+	<br><br><br>
+	<span>Over for right keep PERMANENT</span>
+	<div style="width:250px" data-nitips-position="bottom" data-nitips-permanent class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+</body>
+</html>

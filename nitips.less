@@ -1,0 +1,76 @@
+/*/
+@rounding: 10px;
+@padding: 20px 25px;
+@arrow-size: 15px;
+/* BIG */
+
+/**/
+@rounding: 8px;
+@padding: 13px 13px;
+@arrow-size: 10px;
+/* SMALL */
+
+.nitips-tip {
+	background-color: #292929;
+ 
+	position: absolute;
+	padding: @padding;
+ 
+	color: white;
+	text-align: center;
+
+	border-radius: @rounding;
+}
+
+	.nitips-tip:after { /* DEFAULT: .top */
+		content: '';
+		position: absolute;
+
+		width: 0;
+		height: 0;
+
+		border: @arrow-size solid;
+		border-color: transparent;
+	}
+
+	.nitips-tip.nitips-top:after {
+		border-top-color: #292929;
+
+		top: 100%;
+		left: @arrow-size;
+	}
+
+	.nitips-tip.nitips-bottom:after {
+		border-bottom-color: #292929;
+
+		top: -(@arrow-size * 2);
+		left: @arrow-size;
+	}
+
+	.nitips-tip.nitips-left:after {
+		border-left-color: #292929;
+
+		top: 50%;
+		left: 100%;
+		margin-top: -@arrow-size;
+	}
+
+	.nitips-tip.nitips-right:after {
+		border-right-color: #292929;
+
+		top: 50%;
+		left: -(@arrow-size * 2);
+		margin-top: -@arrow-size;
+	}
+
+	.nitips-tip.nitips-hand:not(input) {
+		cursor: pointer;
+	}
+
+	.nitips-tip.nitips-close {
+		position: absolute;
+		top: @rounding / 2 - 3;
+		right: @rounding / 2 + 2;
+		font-size: @rounding + 2px;
+		color: #bbb;
+	}

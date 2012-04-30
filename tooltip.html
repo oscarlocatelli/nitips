@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/Oscar/Desktop/tooltip.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/less">
+		body { font-family: Arial, "MS Trebuchet", sans-serif; }
+		span { display: inline-block; background-color: #f00; margin-left: 300px; }
+		span:first-child { margin-top: 170px; }
+
+		/*/
+		@rounding: 10px;
+		@padding: 20px 25px;
+		@arrow-size: 15px;
+		/* BIG */
+
+		/**/
+		@rounding: 9px;
+		@padding: 12px 15px;
+		@arrow-size: 10px;
+		/* SMALL */
+
+		.speech-bubble {
+		    background-color: #292929;
+		 
+		 	display: inline-block;
+		 	padding: @padding;
+		 	/* width: 200px */
+		    /*height: 150px;
+		    line-height: 150px; /* vertically center */
+		 
+		    color: white;
+		    text-align: center;
+
+		    border-radius: @rounding;
+		    z-index: 99990;
+		}
+
+		.speech-bubble:after { /* DEFAULT: .top */
+			content: '';
+			position: absolute;
+
+			width: 0;
+			height: 0;
+
+			border: @arrow-size solid;
+			border-color: #292929 transparent transparent transparent;
+
+			top: 100%;
+			left: @arrow-size;
+			margin-left: 0;
+			margin-top: 0;
+		}
+
+		.speech-bubble.bottom:after {
+			border-color: transparent transparent #292929 transparent;
+
+			top: -(@arrow-size * 2);
+			left: @arrow-size;
+			margin-left: 0;
+			margin-top: 0;
+		}
+
+		.speech-bubble.left:after {
+			border-color: transparent transparent transparent #292929;
+
+			top: 50%;
+			left: 100%;
+			margin-left: 0;
+			margin-top: -@arrow-size;
+		}
+
+		.speech-bubble.right:after {
+			border-color: transparent #292929 transparent transparent;
+
+			top: 50%;
+			left: -(@arrow-size * 2);
+			margin-left: 0;
+			margin-top: -@arrow-size;
+		}
+	</style>
+	<script src="less.min.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<span id="hand">Ciao</span>
+	<div style="width:250px" class="speech-bubble"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span>Ciao</span>
+	<div style="width:250px" class="speech-bubble bottom"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span>Ciao</span>
+	<div class="speech-bubble right show">Hi there!</div>
+	<br><br><br>
+	<span>Ciao</span>
+	<div style="width:250px" class="speech-bubble left"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span>Ciao</span>
+	<div style="width:250px" class="speech-bubble right keep"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<br><br><br>
+	<span>Ciao</span>
+	<div style="width:250px" class="speech-bubble right keep permanent"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+
+	<div style="width:250px" data-nitips-for="#hand" class="speech-bubble bottom"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+</body>
+<script type="text/javascript">
+	$(function () {
+		/*/ var arrow = 15, dist = 8, round = 10; /* BIG */
+		/**/ var arrow = 10, dist = 5, round = 8; /* SMALL */
+		$('.speech-bubble').each(function (i, el) {
+			var $el = $(el), tSel = $el.attr('data-nitips-for'), target, outByTip = true, outByHand = true;
+
+			if (tSel) target = $(tSel);
+			else target = $el.prev();
+
+			$el.hide().css('position', 'absolute');
+			$el.on('mouseover', function(event) {
+				outByTip = false;
+			});
+
+			target.css('cursor', 'pointer').on('mouseover', function(event) {
+				outByHand = false;
+				var pos = target.offset(),
+					tT = pos.top, tL = pos.left,
+					tW = target.outerWidth(), tH = target.outerHeight(),
+					eW = $el.outerWidth(), eH = $el.outerHeight();
+
+				if ($el.hasClass('bottom'))
+					$el.css('top', tT + tH + arrow + dist).css('left', tL + tW/2 - arrow*2);
+				else if ($el.hasClass('left'))
+					$el.css('top', tT + tH/2 - eH/2).css('left', tL - eW - arrow - dist);
+				else if ($el.hasClass('right'))
+					$el.css('top', tT + tH/2 - eH/2).css('left', tL + tW + arrow + dist);
+				else
+					$el.css('top', tT - eH - arrow - dist).css('left', tL + tW/2 - arrow*2);
+
+				$el.css('z-index', '99999').show();
+			});
+
+
+			$el.on('mouseout', function(event) {
+				outByTip = true;
+				if (!$el.hasClass('show') && !$el.hasClass('keep')) {
+					window.setTimeout(function () { if (outByHand && outByTip) $el.css('z-index', '99990').hide(); }, 400);
+				}
+				else if (outByHand && outByTip) $el.css('z-index', '99990');
+			});
+			target.on('mouseout', function(event) {
+				outByHand = true;
+				if (!$el.hasClass('show') && !$el.hasClass('keep')) {
+					window.setTimeout(function () { if (outByHand && outByTip) $el.css('z-index', '99990').hide(); }, 400);
+				}
+				else if (outByHand && outByTip) $el.css('z-index', '99990');
+			});
+
+			if (!$el.hasClass('permanent')) {
+				$el.on('click', function(event) {
+					$el.css('z-index', '99990').hide();
+				});
+				if ($el.hasClass('show') || $el.hasClass('keep')) {
+					$el.css('cursor', 'pointer');
+					var closer = $('<div>x</div>');
+					closer.css('position', 'absolute')
+						  .css('top', round/2 - 3)
+						  .css('right', round/2 + 2)
+						  .css('font-size', '10px')
+						  .css('color', '#bbb');
+					$el.prepend(closer);
+				}
+			}
+
+			if ($el.hasClass('show')) { target.mouseover(); $el.css('z-index', '99990'); }
+		});
+	});
+</script>
+</html>

@@ -63,14 +63,14 @@
 		margin-top: -@arrow-size;
 	}
 
-	.nitips-tip.nitips-hand:not(input) {
-		cursor: pointer;
-	}
-
-	.nitips-tip.nitips-close {
+	.nitips-tip .nitips-close {
 		position: absolute;
 		top: @rounding / 2 - 3;
 		right: @rounding / 2 + 2;
 		font-size: @rounding + 2px;
 		color: #bbb;
 	}
+
+.nitips-hand:not(input) {
+	cursor: pointer;
+}

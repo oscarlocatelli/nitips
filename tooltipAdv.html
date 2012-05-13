@@ -24,26 +24,26 @@
 </head>
 <body>
 	<span>Click for top</span>
-	<div style="width:250px" data-nitips-activation="click" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<div style="width:250px" data-nitips-activation="click" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there 1!<br>I am an huge bear! aaarrgh!!!</div>
 	<br><br><br>
 	<span id="ppp">Left auto show and keep and over for bottom</span>
-	<div style="width:250px" data-nitips-position="bottom" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
-	<div data-nitips-hand="#ppp" data-nitips-position="left" data-nitips-autoShow data-nitips-keepAlive class="nitips">Hi there!</div>
+	<div style="width:250px" data-nitips-position="bottom" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there 2!<br>I am an huge bear! aaarrgh!!!</div>
+	<div data-nitips-hand="#ppp" data-nitips-position="left" data-nitips-autoShow data-nitips-keepAlive class="nitips">Hi there 3!</div>
 	<br><br><br>
 	<span>Auto show no keep</span>
-	<div data-nitips-position="right" data-nitips-autoShow class="nitips">Hi there!</div>
+	<div data-nitips-position="right" data-nitips-autoShow class="nitips">Hi there 4!</div>
 	<br><br><br>
 	<span>Over for left</span>
-	<div style="width:250px" data-nitips-position="left" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<div style="width:250px" data-nitips-position="left" class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there 5!<br>I am an huge bear! aaarrgh!!!</div>
 	<br><br><br>
 	<span>Over for right keep</span>
-	<div style="width:250px" data-nitips-position="right" data-nitips-keepAlive class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<div style="width:250px" data-nitips-position="right" data-nitips-keepAlive class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there 6!<br>I am an huge bear! aaarrgh!!!</div>
 	<br><br><br>
 	<span id="hand">Over for partial local load at left and click for Cross Site Load on right</span>
-	<div style="width: 500px; height: 500px;" class="nitips" data-nitips-position="right" data-nitips-activation="click" data-nitips-hand="#hand" data-nitips-loadUrl="http://www.microsoft.it"><em>Loading ...</em></div>
-	<div class="nitips" data-nitips-position="left" data-nitips-hand="#hand" data-nitips-loadUrl="partial.html"><em>Loading ...</em></div>
+	<div style="width: 500px; height: 500px;" class="nitips" data-nitips-position="right" data-nitips-activation="click" data-nitips-hand="#hand" data-nitips-loadUrl="http://www.microsoft.it"><em>Loading Cross-Domain Site...</em></div>
+	<div class="nitips" style="width: 250px" data-nitips-position="left" data-nitips-hand="#hand" data-nitips-loadUrl="partial.html"><em>Loading ... (not work without deploy on web server, with chrome use --allow-file-access-from-files option)</em></div>
 	<br><br><br>
 	<span>Over for right keep PERMANENT</span>
-	<div style="width:250px" data-nitips-position="bottom" data-nitips-permanent class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there!<br>I am an huge bear! aaarrgh!!!</div>
+	<div style="width:250px" data-nitips-position="bottom" data-nitips-permanent class="nitips"><img style="float: left; margin: 0 20px 0 0" src="./tooltip_files/ico.jpg">Hi there 7!<br>I am an huge bear! aaarrgh!!!</div>
 </body>
 </html>
